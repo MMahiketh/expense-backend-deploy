@@ -19,7 +19,6 @@ pipeline {
     parameters{
         choice(name: 'ENV', choices: ['dev', 'qa', 'uat', 'pre-prod'], description: 'Select environment for deploy')
         string(name: 'version', description: 'Enter app version')
-        imageURL = "${awsID}.${awsECRurl}/${project}/${ENV}/${component}"
     }
     stages {
         stage('Setup Environment') {
@@ -27,6 +26,7 @@ pipeline {
                 script {
                     ENV = params.ENV
                     appVersion = params.version
+                    imageURL = "${awsID}.${awsECRurl}/${project}/${ENV}/${component}"
                 }
             }
         }
