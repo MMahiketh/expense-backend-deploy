@@ -17,7 +17,7 @@ pipeline {
         ENV = ''
     }
     parameters{
-        choice(name: 'ENV', defaultValue: ['dev','qa','uat','pre-prod'], description: 'Select environment for deploy')
+        choice(name: 'ENV', choices: ['dev', 'qa', 'uat', 'pre-prod'], description: 'Select environment for deploy')
         string(name: 'version', description: 'Enter app version')
     }
     stages {
